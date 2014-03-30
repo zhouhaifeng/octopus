@@ -3198,6 +3198,19 @@ bgp_nlri_sanity_check (struct peer *peer, int afi, u_char *pnt,
 	  return -1;
 	}
 
+      /*begin: added by zhouhaifeng for bgp-ls 20140323*/
+      /* link sate afi/safi check. */
+      if ((afi == AFI_LS) && ((safi != SAFI_LS || (sai != SAFI_VPN_LS)))
+	{
+	  plog_err (peer->log, 
+		    "%s [Error] Update packet error (wrong link stat update)",
+		    peer->host);
+	  bgp_notify_send (peer, BGP_NOTIFY_UPDATE_ERR, 
+			   BGP_NOTIFY_UPDATE_INVAL_NETWORK);
+	  return -1;
+	}
+        /*end: added by zhouhaifeng for bgp-ls 20140323*/
+
       /* Packet size overflow check. */
       psize = PSIZE (prefixlen);
 

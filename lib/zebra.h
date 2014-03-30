@@ -496,14 +496,21 @@ extern const char *zserv_command_string (unsigned int command);
 /* Address family numbers from RFC1700. */
 #define AFI_IP                    1
 #define AFI_IP6                   2
-#define AFI_MAX                   3
+/*begin: added by zhouhaifeng for bgp-ls 20140323*/
+#define AFI_LS                    16388
+#define AFI_MAX                   16399
+/*end: added by zhouhaifeng for bgp-ls 20140323*/
 
 /* Subsequent Address Family Identifier. */
 #define SAFI_UNICAST              1
 #define SAFI_MULTICAST            2
 #define SAFI_RESERVED_3           3
 #define SAFI_MPLS_VPN             4
-#define SAFI_MAX                  5
+/*begin: added by zhouhaifeng for bgp-ls 20140323*/
+#define SAFI_LS                         71
+#define SAFI_VPN_LS                 128
+#define SAFI_MAX                  129
+/*end: added by zhouhaifeng for bgp-ls 20140323*/
 
 /* Filter direction.  */
 #define FILTER_IN                 0

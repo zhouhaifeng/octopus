@@ -61,6 +61,11 @@ struct bgp_advertise
 
   /* BGP info.  */
   struct bgp_info *binfo;
+
+  /* bgp-ls*/
+  bgp_nlri_ls_node *node;
+  bgp_nlri_ls_link *link;
+  bgp_nlri_ls_prefix *prefix;
 };
 
 /* BGP adjacency out.  */
@@ -100,6 +105,7 @@ struct bgp_synchronize
   struct bgp_advertise_fifo update;
   struct bgp_advertise_fifo withdraw;
   struct bgp_advertise_fifo withdraw_low;
+  struct bgp_advertise_fifo ls_update;;
 };
 
 /* BGP adjacency linked list.  */
